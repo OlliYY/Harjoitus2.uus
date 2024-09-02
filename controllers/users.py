@@ -1,6 +1,6 @@
 from flask import jsonify
 
-from models import User
+from models_mysql import User
 
 
 # Nyt jokaista controlleria vastaa yksi tiedosto. Tiedostot sisältävät kaikki funktiot,jotka pitävät
