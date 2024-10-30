@@ -10,9 +10,13 @@ class User:
 
     @classmethod
     def get_all(cls):
-        with mysql.connector.connect(user='root', database='sovelluskehykset_bad1') as con:
-            with con.cursor(dictionary=True) as cur:
-                cur.execute('SELECT * FROM users')
-                result = cur.fetchall()
-                users = [cls(user['id'], user['username'], user['firstname'], user['lastname']) for user in result]
+        con = mysql.connector.connect(user='root', database='sovelluskehykset_bad1')
+        cur = con.cursor(dictionary=True)
+        try:
+            cur.execute('SELECT * FROM users')
+            result = cur.fetchall()
+            users = [cls(user['id'], user['username'], user['firstname'], user['lastname']) for user in result]
+        finally:
+            cur.close()
+            con.close()
         return users
