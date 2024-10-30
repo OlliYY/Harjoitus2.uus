@@ -14,8 +14,5 @@ class User:
             with con.cursor() as cur:
                 cur.execute('SELECT * FROM users')
                 result = cur.fetchall()
-                users = []
-                for user in result:
-                    users.append(cls(user[0], user[1], user[2], user[3]))
-
-                return users
+                users = [cls(user[0], user[1], user[2], user[3]) for user in result]
+        return users

@@ -11,11 +11,8 @@ class User:
     @classmethod
     def get_all(cls):
         with mysql.connector.connect(user='root', database='sovelluskehykset_bad1') as con:
-            with con.cursor() as cur:
+            with con.cursor(dictionary=True) as cur:
                 cur.execute('SELECT * FROM users')
                 result = cur.fetchall()
-                users = []
-                for user in result:
-                    users.append(cls(user[0], user[1], user[2], user[3]))
-
-                return users
+                users = [cls(user['id'], user['username'], user['firstname'], user['lastname']) for user in result]
+        return users
