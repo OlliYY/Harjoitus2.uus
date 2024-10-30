@@ -16,3 +16,10 @@ class User:
                 result = cur.fetchall()
                 users = [cls(user[0], user[1], user[2], user[3]) for user in result]
         return users
+
+
+class Product:
+    def __init__(self, id, name, description):
+        self.id = id
+        self.name = name
+        self.description = description
