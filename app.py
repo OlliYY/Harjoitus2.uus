@@ -1,3 +1,4 @@
+## OLEN KÄYTTÄNYT TEHTÄVÄSSÄ APUNA TEKOÄLYÄ!
 from flask import Flask
 
 app = Flask(__name__)
